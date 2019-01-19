@@ -37,16 +37,6 @@ class App extends Component {
     },8000)
   } 
 
-  getLiveUsers = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
-    console.log(response.status)
-    if (response.status !== 200) {
-      throw Error(body.message) 
-    }
-    return body;
-  };
-
   render () {
     const {
       git
@@ -58,11 +48,13 @@ class App extends Component {
           <img
             src={gitIcon}
             height={60}
+            alt=''
           />
           <div className='subHeader'>User Count</div>
           <img style ={{paddingLeft:'10px' , paddingBottom:'7px'}}
             src={ liveIcon }
             height={40}
+            alt=''
           />
         </PageHeader>
         <AppContainer>
@@ -75,6 +67,7 @@ class App extends Component {
                 <Panel className={cx('infoCardPanel')}>
                 <ColumnWrapper>
                   <span style={{fontSize:'40px', color:'#3c4146', textShadow: '2px 1px darkgrey'}}>
+                  +
                   <CountUp  end={git.increment}/>
                   </span>
                   <span style={{fontSize:'27px',color:'steelblue' , letterSpacing:'4px'}}>NEW USERS</span>
